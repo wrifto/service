@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Buy credits to contact workers. ₹29 for 2 contacts, ₹59 for 5 contacts, ₹99 for 10 contacts.">
+    <meta name="theme-color" content="#2563eb">
+    <title>Subscriptions — Wrifto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">W</div>
+                    <span class="logo-text">Wrifto</span>
+                </a>
+
+                <nav class="nav desktop-nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="browse.html" class="nav-link">Browse Workers</a>
+                    <a href="subscriptions.html" class="nav-link active">Subscriptions</a>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="icon-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                    </button>
+                    <a href="auth.html" class="btn-secondary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <span>Sign In</span>
+                    </a>
+                </div>
+
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="subscriptions-hero">
+        <div class="container">
+            <h1 class="hero-title">Buy Credits</h1>
+            <p class="hero-subtitle">5 credits = 1 contact. Buy credits to reach out to workers and get your work done.</p>
+        </div>
+    </section>
+
+    <!-- Credit Plans -->
+    <section class="section">
+        <div class="container">
+            <div class="credit-plans-grid" style="max-width: 900px; margin: 0 auto;">
+                <div class="credit-plan-card">
+                    <div class="plan-badge">2 contacts</div>
+                    <h3 class="plan-name">Starter</h3>
+                    <div class="plan-price"><span class="price-amount">₹29</span></div>
+                    <p class="plan-credits">10 credits</p>
+                    <button class="btn-primary btn-full" onclick="purchasePlan('plan-2')">Buy Now</button>
+                </div>
+                <div class="credit-plan-card featured">
+                    <div class="plan-badge popular">Best value</div>
+                    <h3 class="plan-name">Standard</h3>
+                    <div class="plan-price"><span class="price-amount">₹59</span></div>
+                    <p class="plan-credits">25 credits (5 contacts)</p>
+                    <button class="btn-primary btn-full" onclick="purchasePlan('plan-5')">Buy Now</button>
+                </div>
+                <div class="credit-plan-card">
+                    <div class="plan-badge">10 contacts</div>
+                    <h3 class="plan-name">Premium</h3>
+                    <div class="plan-price"><span class="price-amount">₹99</span></div>
+                    <p class="plan-credits">50 credits</p>
+                    <button class="btn-primary btn-full" onclick="purchasePlan('plan-10')">Buy Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Promotions -->
+    <section class="section bg-white">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Active Promotions</h2>
+                <p class="section-subtitle">Take advantage of our current offers</p>
+            </div>
+
+            <div class="promotions-grid">
+                <div class="promo-card-large">
+                    <div class="promo-header bg-red"></div>
+                    <div class="promo-body">
+                        <div class="promo-discount bg-red">50% OFF</div>
+                        <h3 class="promo-card-title">New Year Special</h3>
+                        <p class="promo-card-text">Get 50% off on your first month subscription</p>
+                        <div class="promo-code-box">
+                            <p class="promo-code-label">Promo Code</p>
+                            <div class="promo-code-content">
+                                <code class="promo-code-text">NEWYEAR50</code>
+                                <button class="btn-copy">Copy</button>
+                            </div>
+                        </div>
+                        <p class="promo-valid">Valid until: Feb 28, 2026</p>
+                    </div>
+                </div>
+
+                <div class="promo-card-large">
+                    <div class="promo-header bg-green"></div>
+                    <div class="promo-body">
+                        <div class="promo-discount bg-green">₹500</div>
+                        <h3 class="promo-card-title">Refer & Earn</h3>
+                        <p class="promo-card-text">Refer a friend and both get ₹500 credits</p>
+                        <div class="promo-code-box">
+                            <p class="promo-code-label">Promo Code</p>
+                            <div class="promo-code-content">
+                                <code class="promo-code-text">REFER500</code>
+                                <button class="btn-copy">Copy</button>
+                            </div>
+                        </div>
+                        <p class="promo-valid">Valid until: Ongoing</p>
+                    </div>
+                </div>
+
+                <div class="promo-card-large">
+                    <div class="promo-header bg-blue-gradient"></div>
+                    <div class="promo-body">
+                        <div class="promo-discount bg-blue-gradient">15% OFF</div>
+                        <h3 class="promo-card-title">Bundle & Save</h3>
+                        <p class="promo-card-text">Book 3 or more services together and save</p>
+                        <div class="promo-code-box">
+                            <p class="promo-code-label">Promo Code</p>
+                            <div class="promo-code-content">
+                                <code class="promo-code-text">BUNDLE15</code>
+                                <button class="btn-copy">Copy</button>
+                            </div>
+                        </div>
+                        <p class="promo-valid">Valid until: Mar 15, 2026</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+        <div class="container-small">
+            <h2 class="section-title center-text">Frequently Asked Questions</h2>
+            
+            <div class="faq-container">
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        How many credits do I need to contact a worker?
+                        <span class="faq-icon">▼</span>
+                    </summary>
+                    <p class="faq-answer">5 credits = 1 contact. Each time you contact a worker, 5 credits are deducted from your balance.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        Do credits expire?
+                        <span class="faq-icon">▼</span>
+                    </summary>
+                    <p class="faq-answer">No, your credits never expire. Use them whenever you need to contact a worker.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        How do I buy more credits?
+                        <span class="faq-icon">▼</span>
+                    </summary>
+                    <p class="faq-answer">Sign in and choose any credit plan above. Credits are added to your account immediately after purchase.</p>
+                </details>
+
+                <details class="faq-item">
+                    <summary class="faq-question">
+                        Are there any hidden fees?
+                        <span class="faq-icon">▼</span>
+                    </summary>
+                    <p class="faq-answer">No hidden fees! The price you see is what you pay. All credits are usable for contacting workers.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Contact Workers?</h2>
+                <p class="cta-subtitle">Sign in to buy credits and start connecting with verified professionals</p>
+                <a href="auth.html" class="btn-white">Sign In to Buy Credits</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <div class="logo-icon">W</div>
+                        <span class="logo-text">Wrifto</span>
+                    </div>
+                    <p class="footer-text">Your trusted platform for connecting with skilled professionals.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="browse.html?category=electrician">Electrician</a></li>
+                        <li><a href="browse.html?category=plumber">Plumber</a></li>
+                        <li><a href="browse.html?category=carpenter">Carpenter</a></li>
+                        <li><a href="browse.html">All Services</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Safety</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Wrifto. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+    <script>
+        function purchasePlan(planId) {
+            const user = getCurrentUser();
+            if (!user || user.type !== 'customer') {
+                window.location.href = 'auth.html?redirect=' + encodeURIComponent(location.href);
+                return;
+            }
+            const ok = purchaseCredits(user.id, planId);
+            if (ok) {
+                alert('Credits added successfully!');
+            } else alert('Purchase failed.');
+        }
+    </script>
+</body>
+</html>

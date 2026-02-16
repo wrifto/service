@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View professional profile, reviews, and book services. Verified service providers on Wrifto.">
+    <meta name="theme-color" content="#2563eb">
+    <title>Worker Profile — Wrifto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">W</div>
+                    <span class="logo-text">Wrifto</span>
+                </a>
+
+                <nav class="nav desktop-nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="browse.html" class="nav-link">Browse Workers</a>
+                    <a href="subscriptions.html" class="nav-link">Subscriptions</a>
+                </nav>
+
+                <div class="header-actions">
+                    <a href="subscriptions.html" class="btn-secondary" id="headerCredits" style="display:none"></a>
+                    <a href="customer-dashboard.html" class="btn-secondary" id="headerDashboard" style="display:none">Dashboard</a>
+                    <a href="auth.html" class="btn-secondary" id="headerSignIn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <span>Sign In</span>
+                    </a>
+                </div>
+
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="worker-profile-page">
+        <div class="container">
+            <!-- Worker Header Card -->
+            <div class="worker-header-card">
+                <div class="worker-header-layout">
+                    <div class="worker-header-image">
+                        <img id="workerImage" src="" alt="Worker">
+                        <div class="pro-badge" id="proBadge" style="display: none;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                                <path d="M4 22h16"></path>
+                                <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                                <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                                <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path>
+                            </svg>
+                            <span>PRO</span>
+                        </div>
+                    </div>
+
+                    <div class="worker-header-info">
+                        <div class="worker-name-section">
+                            <h1 class="worker-name" id="workerName"></h1>
+                            <p class="worker-specialty" id="workerSpecialty"></p>
+                        </div>
+
+                        <div class="worker-stats">
+                            <div class="worker-stat-item">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none" class="star-icon">
+                                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                </svg>
+                                <span class="worker-rating" id="workerRating"></span>
+                                <span class="worker-reviews" id="workerReviews"></span>
+                            </div>
+                            <div class="worker-stat-item">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                </svg>
+                                <span id="completedJobs"></span>
+                            </div>
+                        </div>
+
+                        <div class="worker-details-grid">
+                            <div class="worker-detail">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span id="workerLocation"></span>
+                            </div>
+                            <div class="worker-detail">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 16 14"></polyline>
+                                </svg>
+                                <span class="available" id="workerAvailability"></span>
+                            </div>
+                            <div class="worker-detail">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                <span id="responseTime"></span>
+                            </div>
+                            <div class="worker-detail">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                    <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                                </svg>
+                                <span id="experience"></span>
+                            </div>
+                        </div>
+
+                        <div class="worker-pricing">
+                            <div>
+                                <span class="worker-price" id="workerPrice"></span>
+                                <span class="price-unit">/hour</span>
+                            </div>
+                            <div class="worker-actions">
+                                <button class="btn-primary btn-large" onclick="handleContactWorker()">Contact Worker (5 credits)</button>
+                                <button class="btn-secondary btn-large" onclick="openBookingModal()">Book Service</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Layout -->
+            <div class="profile-layout">
+                <!-- Left Column -->
+                <div class="profile-main">
+                    <!-- About Section -->
+                    <div class="profile-card">
+                        <h2 class="profile-card-title">About</h2>
+                        <p class="profile-text" id="workerBio"></p>
+                    </div>
+
+                    <!-- Skills Section -->
+                    <div class="profile-card">
+                        <h2 class="profile-card-title">Skills & Expertise</h2>
+                        <div class="skills-container" id="workerSkills"></div>
+                    </div>
+
+                    <!-- Reviews Section -->
+                    <div class="profile-card">
+                        <h2 class="profile-card-title">Reviews (<span id="reviewCount"></span>)</h2>
+                        <div class="reviews-container" id="reviewsContainer"></div>
+                    </div>
+                </div>
+
+                <!-- Right Sidebar -->
+                <div class="profile-sidebar">
+                    <!-- Trust Badges -->
+                    <div class="sidebar-card">
+                        <h3 class="sidebar-title">Trust & Safety</h3>
+                        <div class="trust-badges">
+                            <div class="trust-badge">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                                <span>Identity Verified</span>
+                            </div>
+                            <div class="trust-badge">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                                <span>Background Checked</span>
+                            </div>
+                            <div class="trust-badge">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                                <span>Licensed Professional</span>
+                            </div>
+                            <div class="trust-badge">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                                <span>Insured</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pricing Info -->
+                    <div class="sidebar-card pricing-card">
+                        <h3 class="sidebar-title">Pricing Information</h3>
+                        <div class="pricing-details">
+                            <div class="pricing-row">
+                                <span>Hourly Rate</span>
+                                <span class="pricing-value" id="hourlyRate"></span>
+                            </div>
+                            <div class="pricing-row">
+                                <span>Minimum Booking</span>
+                                <span class="pricing-value">2 hours</span>
+                            </div>
+                            <div class="pricing-row">
+                                <span>Service Fee</span>
+                                <span class="pricing-value">Included</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Promotion -->
+                    <div class="sidebar-card promo-card">
+                        <div class="promo-content">
+                            <div class="promo-icon">🎉</div>
+                            <h3 class="promo-title">First Booking Discount</h3>
+                            <p class="promo-text">Get 10% off your first booking with this professional!</p>
+                            <div class="promo-code">
+                                <code>FIRST10</code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Booking Modal -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Book <span id="modalWorkerName"></span></h2>
+                <button class="close-btn" onclick="closeBookingModal()">✕</button>
+            </div>
+
+            <div class="modal-body">
+                <form id="bookingForm" onsubmit="handleBooking(event)">
+                    <div class="form-group">
+                        <label class="form-label">Select Date</label>
+                        <input type="date" id="bookingDate" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Select Time</label>
+                        <select id="bookingTime" class="form-input" required>
+                            <option value="">Choose a time</option>
+                            <option value="08:00">08:00 AM</option>
+                            <option value="09:00">09:00 AM</option>
+                            <option value="10:00">10:00 AM</option>
+                            <option value="11:00">11:00 AM</option>
+                            <option value="12:00">12:00 PM</option>
+                            <option value="13:00">01:00 PM</option>
+                            <option value="14:00">02:00 PM</option>
+                            <option value="15:00">03:00 PM</option>
+                            <option value="16:00">04:00 PM</option>
+                            <option value="17:00">05:00 PM</option>
+                            <option value="18:00">06:00 PM</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Estimated Hours: <span id="hoursDisplay">2</span></label>
+                        <input type="range" id="hoursSlider" class="form-slider" min="2" max="8" step="0.5" value="2">
+                        <div class="slider-labels">
+                            <span>2 hrs</span>
+                            <span>8 hrs</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Additional Notes (Optional)</label>
+                        <textarea id="bookingNotes" class="form-textarea" rows="4" placeholder="Describe the work you need done..."></textarea>
+                    </div>
+
+                    <div class="booking-summary">
+                        <div class="summary-row">
+                            <span>Hourly Rate</span>
+                            <span id="summaryRate"></span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Hours</span>
+                            <span id="summaryHours">× 2</span>
+                        </div>
+                        <div class="summary-row summary-total">
+                            <span>Total</span>
+                            <span id="summaryTotal"></span>
+                        </div>
+                    </div>
+
+                    <div class="modal-actions">
+                        <button type="button" class="btn-secondary" onclick="closeBookingModal()">Cancel</button>
+                        <button type="submit" class="btn-primary">Confirm Booking</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <div class="logo-icon">W</div>
+                        <span class="logo-text">Wrifto</span>
+                    </div>
+                    <p class="footer-text">Your trusted platform for connecting with skilled professionals.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="browse.html?category=electrician">Electrician</a></li>
+                        <li><a href="browse.html?category=plumber">Plumber</a></li>
+                        <li><a href="browse.html?category=carpenter">Carpenter</a></li>
+                        <li><a href="browse.html">All Services</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Safety</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Wrifto. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="auth.js"></script>
+    <script src="data.js"></script>
+    <script src="worker-profile.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

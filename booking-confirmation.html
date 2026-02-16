@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your booking has been confirmed. View details and next steps.">
+    <meta name="theme-color" content="#2563eb">
+    <title>Booking Confirmed — Wrifto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">W</div>
+                    <span class="logo-text">Wrifto</span>
+                </a>
+
+                <nav class="nav desktop-nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="browse.html" class="nav-link">Browse Workers</a>
+                    <a href="subscriptions.html" class="nav-link">Subscriptions</a>
+                </nav>
+
+                <div class="header-actions">
+                    <button class="icon-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                        </svg>
+                    </button>
+                    <button class="btn-secondary">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <span>Sign In</span>
+                    </button>
+                </div>
+
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="confirmation-page">
+        <div class="container-small">
+            <div class="confirmation-header">
+                <div class="success-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                </div>
+                <h1 class="confirmation-title">Booking Confirmed!</h1>
+                <p class="confirmation-subtitle">Your service has been successfully booked</p>
+            </div>
+
+            <div class="confirmation-card">
+                <div class="booking-reference">
+                    <p class="reference-label">Booking Reference</p>
+                    <p class="reference-number" id="bookingId"></p>
+                </div>
+
+                <div class="booking-details">
+                    <h2 class="details-title">Booking Details</h2>
+                    
+                    <div class="detail-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                            <line x1="16" y1="2" x2="16" y2="6"></line>
+                            <line x1="8" y1="2" x2="8" y2="6"></line>
+                            <line x1="3" y1="10" x2="21" y2="10"></line>
+                        </svg>
+                        <div>
+                            <p class="detail-label">Date</p>
+                            <p class="detail-value" id="detailDate">—</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <div>
+                            <p class="detail-label">Time</p>
+                            <p class="detail-value" id="detailTime">—</p>
+                        </div>
+                    </div>
+
+                    <div class="detail-item">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        <div>
+                            <p class="detail-label">Location</p>
+                            <p class="detail-value">Your address (as per profile)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="professional-section">
+                    <h3 class="professional-title">Service Professional</h3>
+                    <div class="professional-info">
+                        <div class="professional-avatar"></div>
+                        <div>
+                            <p class="professional-name" id="detailWorkerName">—</p>
+                            <p class="professional-note">Will arrive at your location at the scheduled time</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="payment-summary">
+                    <h3 class="payment-title">Payment Summary</h3>
+                    <div class="payment-details">
+                        <div class="payment-row">
+                            <span>Service Cost (<span id="detailHours">—</span> hours)</span>
+                            <span id="detailServiceCost">—</span>
+                        </div>
+                        <div class="payment-row">
+                            <span>Platform Fee</span>
+                            <span>₹0</span>
+                        </div>
+                        <div class="payment-row discount">
+                            <span>Discount (FIRST10)</span>
+                            <span id="detailDiscount">—</span>
+                        </div>
+                        <div class="payment-row total">
+                            <span>Total Amount</span>
+                            <span id="detailTotal">—</span>
+                        </div>
+                    </div>
+                    <p class="payment-note">Payment will be collected after service completion</p>
+                </div>
+            </div>
+
+            <div class="next-steps-card">
+                <h3 class="next-steps-title">What Happens Next?</h3>
+                <ul class="next-steps-list">
+                    <li>
+                        <span class="step-number">1.</span>
+                        <span>You'll receive a confirmation email with all booking details</span>
+                    </li>
+                    <li>
+                        <span class="step-number">2.</span>
+                        <span>The professional will contact you 24 hours before the appointment</span>
+                    </li>
+                    <li>
+                        <span class="step-number">3.</span>
+                        <span>Be available at the scheduled time at your location</span>
+                    </li>
+                    <li>
+                        <span class="step-number">4.</span>
+                        <span>Make payment after service is completed to your satisfaction</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                    </svg>
+                    <div>
+                        <p class="contact-label">Need Help?</p>
+                        <p class="contact-value">1800-123-4567</p>
+                    </div>
+                </div>
+
+                <div class="contact-card">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                    <div>
+                        <p class="contact-label">Email Support</p>
+                        <p class="contact-value">help@wrifto.com</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <a href="index.html" class="btn-secondary btn-large">Back to Home</a>
+                <a href="browse.html" class="btn-primary btn-large">Book Another Service</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <div class="logo-icon">W</div>
+                        <span class="logo-text">Wrifto</span>
+                    </div>
+                    <p class="footer-text">Your trusted platform for connecting with skilled professionals.</p>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="browse.html?category=electrician">Electrician</a></li>
+                        <li><a href="browse.html?category=plumber">Plumber</a></li>
+                        <li><a href="browse.html?category=carpenter">Carpenter</a></li>
+                        <li><a href="browse.html">All Services</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Safety</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Wrifto. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            const bookingId = 'BK' + Date.now();
+            document.getElementById('bookingId').textContent = bookingId;
+
+            const booking = JSON.parse(localStorage.getItem('latestBooking') || '{}');
+            if (booking.workerName) {
+                document.getElementById('detailWorkerName').textContent = booking.workerName;
+                document.getElementById('detailDate').textContent = formatBookingDate(booking.date);
+                const timeStr = formatTime(booking.time);
+                const hours = booking.hours || 2;
+                document.getElementById('detailTime').textContent = `${timeStr} (${hours} ${hours === 1 ? 'hour' : 'hours'})`;
+
+                const serviceCost = booking.totalCost || 0;
+                const discount = Math.round(serviceCost * 0.1);
+                const total = serviceCost - discount;
+
+                document.getElementById('detailHours').textContent = hours;
+                document.getElementById('detailServiceCost').textContent = '₹' + serviceCost;
+                document.getElementById('detailDiscount').textContent = '-₹' + discount;
+                document.getElementById('detailTotal').textContent = '₹' + total;
+            } else {
+                document.getElementById('detailDate').textContent = '—';
+                document.getElementById('detailTime').textContent = '—';
+                document.getElementById('detailWorkerName').textContent = '—';
+                document.getElementById('detailHours').textContent = '—';
+                document.getElementById('detailServiceCost').textContent = '—';
+                document.getElementById('detailDiscount').textContent = '—';
+                document.getElementById('detailTotal').textContent = '—';
+            }
+
+            function formatBookingDate(dateStr) {
+                if (!dateStr) return '—';
+                const d = new Date(dateStr + 'T12:00:00');
+                const today = new Date();
+                today.setHours(0,0,0,0);
+                d.setHours(0,0,0,0);
+                const tomorrow = new Date(today);
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                if (d.getTime() === tomorrow.getTime()) return 'Tomorrow, ' + d.toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+                return d.toLocaleDateString('en-IN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+            }
+            function formatTime(timeStr) {
+                if (!timeStr) return '—';
+                const parts = timeStr.split(':');
+                const h = parseInt(parts[0], 10) || 0;
+                const m = parseInt(parts[1], 10) || 0;
+                const period = h >= 12 ? 'PM' : 'AM';
+                const h12 = h % 12 || 12;
+                return h12 + ':' + String(m).padStart(2, '0') + ' ' + period;
+            }
+        })();
+    </script>
+    <script src="script.js"></script>
+</body>
+</html>
