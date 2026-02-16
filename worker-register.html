@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete KYC - Join as Worker">
+    <meta name="theme-color" content="#2563eb">
+    <title>Worker Registration — Wrifto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <img src="images/wrifto logo.jpeg" alt="Wrifto">
+                    </div>
+                </a>
+                <a href="auth.html" class="btn-secondary">Sign In</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="auth-page">
+        <div class="auth-container">
+            <div class="auth-card">
+                <h1 class="auth-title">Join as Worker</h1>
+                <p class="auth-subtitle">Complete KYC verification to start accepting jobs</p>
+
+                <form class="auth-form" id="kycForm" onsubmit="handleKYC(event)">
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" id="kycName" class="form-input" required placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Age</label>
+                        <input type="number" id="kycAge" class="form-input" required min="18" max="70" placeholder="18">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Years of Experience</label>
+                        <input type="number" id="kycExperience" class="form-input" required min="0" placeholder="5">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Type of Work</label>
+                        <select id="kycCategory" class="form-input" required>
+                            <option value="">Select service</option>
+                            <option value="electrician">Electrician</option>
+                            <option value="plumber">Plumber</option>
+                            <option value="carpenter">Carpenter</option>
+                            <option value="painter">Painter</option>
+                            <option value="mechanic">Mechanic</option>
+                            <option value="ac-repair">AC Repair</option>
+                            <option value="appliance">Appliance Repair</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Specialty / Description</label>
+                        <input type="text" id="kycSpecialty" class="form-input" placeholder="e.g. Residential Wiring, Pipeline Work">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Hourly Rate (₹)</label>
+                        <input type="number" id="kycRate" class="form-input" required min="100" placeholder="400">
+                    </div>
+                    <button type="submit" class="btn-primary btn-full">Complete Verification</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="auth.js"></script>
+    <script src="data.js"></script>
+    <script>
+        const user = getCurrentUser();
+        if (!user || user.type !== 'worker') {
+            window.location.href = 'auth.html';
+        }
+        const worker = getWorkerDB(user.id);
+        if (worker && worker.kycVerified) {
+            window.location.href = 'worker-dashboard.html';
+        }
+        if (worker) {
+            document.getElementById('kycName').value = worker.name || '';
+            document.getElementById('kycAge').value = worker.age || '';
+            document.getElementById('kycExperience').value = worker.experience || '';
+            document.getElementById('kycCategory').value = worker.category || '';
+            document.getElementById('kycSpecialty').value = worker.specialty || '';
+            document.getElementById('kycRate').value = worker.hourlyRate || '';
+        }
+
+        function handleKYC(e) {
+            e.preventDefault();
+            const worker = getWorkerDB(user.id);
+            if (!worker) { alert('Worker not found.'); return; }
+            worker.name = document.getElementById('kycName').value.trim();
+            worker.age = parseInt(document.getElementById('kycAge').value, 10);
+            worker.experience = parseInt(document.getElementById('kycExperience').value, 10);
+            worker.category = document.getElementById('kycCategory').value;
+            worker.specialty = document.getElementById('kycSpecialty').value.trim();
+            worker.hourlyRate = parseInt(document.getElementById('kycRate').value, 10);
+            worker.kycVerified = true;
+            saveWorkerDB(worker);
+            setCurrentUser({ ...user, name: worker.name });
+            alert('KYC verified! You can now receive customer requests.');
+            window.location.href = 'worker-dashboard.html';
+        }
+    </script>
+</body>
+</html>

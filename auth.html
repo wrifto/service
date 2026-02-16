@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign in or create account - Wrifto">
+    <meta name="theme-color" content="#2563eb">
+    <title>Sign In — Wrifto</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <img src="images/wrifto logo.jpeg" alt="Wrifto">
+                    </div>
+                </a>
+                <a href="index.html" class="btn-secondary">Back to Home</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="auth-page">
+        <div class="auth-container">
+            <div class="auth-card">
+                <h1 class="auth-title">Welcome to Wrifto</h1>
+                <p class="auth-subtitle">Sign in or create an account to continue</p>
+
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="login">Sign In</button>
+                    <button class="auth-tab" data-tab="signup">Sign Up</button>
+                </div>
+
+                <div class="auth-tab-panel active" id="loginPanel">
+                    <form class="auth-form" id="loginForm" onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label class="form-label">Account Type</label>
+                            <select id="loginType" class="form-input" required>
+                                <option value="customer">Customer</option>
+                                <option value="worker">Worker</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" id="loginEmail" class="form-input" required placeholder="you@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <input type="password" id="loginPassword" class="form-input" required>
+                        </div>
+                        <button type="submit" class="btn-primary btn-full">Sign In</button>
+                    </form>
+                </div>
+
+                <div class="auth-tab-panel" id="signupPanel">
+                    <form class="auth-form" id="signupForm" onsubmit="handleSignup(event)">
+                        <div class="form-group">
+                            <label class="form-label">Account Type</label>
+                            <select id="signupType" class="form-input" required>
+                                <option value="customer">Customer</option>
+                                <option value="worker">Worker</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" id="signupName" class="form-input" required placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" id="signupEmail" class="form-input" required placeholder="you@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Password</label>
+                            <input type="password" id="signupPassword" class="form-input" required minlength="6" placeholder="Min 6 characters">
+                        </div>
+                        <button type="submit" class="btn-primary btn-full">Create Account</button>
+                    </form>
+                </div>
+
+                <p class="auth-footer">
+                    <a href="auth.html?tab=signup&type=worker">Join as a Worker</a> — sign up, then complete KYC to receive customer requests.
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <script src="auth.js"></script>
+    <script>
+        const params = new URLSearchParams(location.search);
+        if (params.get('tab') === 'signup') {
+            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.auth-tab-panel').forEach(p => p.classList.remove('active'));
+            document.querySelector('[data-tab="signup"]').classList.add('active');
+            document.getElementById('signupPanel').classList.add('active');
+        }
+        if (params.get('type') === 'worker') {
+            document.getElementById('signupType').value = 'worker';
+            document.getElementById('loginType').value = 'worker';
+        }
+        document.querySelectorAll('.auth-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.auth-tab-panel').forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab + 'Panel').classList.add('active');
+            });
+        });
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const type = document.getElementById('loginType').value;
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            let user = type === 'customer' ? loginCustomer(email, password) : loginWorker(email, password);
+            if (!user) {
+                alert('Invalid email or password.');
+                return;
+            }
+            setCurrentUser(user);
+            const redirect = new URLSearchParams(location.search).get('redirect');
+            if (user.type === 'customer') window.location.href = redirect || 'customer-dashboard.html';
+            else window.location.href = redirect || 'worker-dashboard.html';
+        }
+
+        function handleSignup(e) {
+            e.preventDefault();
+            const type = document.getElementById('signupType').value;
+            const name = document.getElementById('signupName').value.trim();
+            const email = document.getElementById('signupEmail').value.trim();
+            const password = document.getElementById('signupPassword').value;
+            if (type === 'customer') {
+                const c = createCustomer(email, name, password);
+                if (!c) { alert('Email already registered.'); return; }
+                setCurrentUser({ type: 'customer', id: c.id, email: c.email, name: c.name });
+                window.location.href = 'subscriptions.html';
+            } else {
+                const w = createWorker(email, name, password, null);
+                if (!w) { alert('Email already registered.'); return; }
+                setCurrentUser({ type: 'worker', id: w.id, email: w.email, name: w.name });
+                window.location.href = 'worker-register.html?kyc=1';
+            }
+        }
+    </script>
+</body>
+</html>
