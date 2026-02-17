@@ -1,11 +1,11 @@
 const categories = [
-  { id: "electrician", name: "Electrician", icon: "⚡", image: "images/electrician.jpeg" },
-  { id: "plumber", name: "Plumber", icon: "🔧", image: "images/plumber.jpeg" },
-  { id: "painter", name: "Painter", icon: "🎨", image: "images/painter.jpeg" },
-  { id: "mechanic", name: "Mechanic", icon: "🛠️", image: "images/mechanic.jpeg" },
-  { id: "carpenter", name: "Carpenter", icon: "🪚", image: "images/carpenter.jpeg" },
-  { id: "ac-repair", name: "AC Repair", icon: "❄️", image: "images/ac repair.jpeg" },
-  { id: "appliance", name: "Appliance Repair", icon: "🔌", image: "images/appliance repair.jpeg" },
+  { id: "electrician", name: "Electrician", icon: "⚡", image: "electrician.jpeg" },
+  { id: "plumber", name: "Plumber", icon: "🔧", image: "plumber.jpeg" },
+  { id: "painter", name: "Painter", icon: "🎨", image: "painter.jpeg" },
+  { id: "mechanic", name: "Mechanic", icon: "🛠️", image: "mechanic.jpeg" },
+  { id: "carpenter", name: "Carpenter", icon: "🪚", image: "carpenter.jpeg" },
+  { id: "ac-repair", name: "AC Repair", icon: "❄️", image: "ac repair.jpeg" },
+  { id: "appliance", name: "Appliance Repair", icon: "🔌", image: "appliance repair.jpeg" },
 ];
 
 const workers = [
