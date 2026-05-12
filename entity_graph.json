@@ -1,0 +1,26 @@
+{
+  "nodes": [
+    {"data": {"id": "E1", "label": "Jane Retail", "entityType": "person", "riskTier": "low"}},
+    {"data": {"id": "E2", "label": "Northwind Holdings LLC", "entityType": "business", "riskTier": "low"}},
+    {"data": {"id": "E3", "label": "Peel Shell Corp", "entityType": "shell", "riskTier": "critical"}},
+    {"data": {"id": "E4", "label": "Director A. Chen", "entityType": "person", "riskTier": "medium"}},
+    {"data": {"id": "E5", "label": "Treasury Desk", "entityType": "internal", "riskTier": "low"}},
+    {"data": {"id": "E6", "label": "Offshore Trust 44B", "entityType": "offshore", "riskTier": "critical"}},
+    {"data": {"id": "E7", "label": "Crypto OTC Desk", "entityType": "vasp", "riskTier": "high"}},
+    {"data": {"id": "E8", "label": "Acme Supplies Inc", "entityType": "vendor", "riskTier": "low"}},
+    {"data": {"id": "E9", "label": "Shared Address 221B", "entityType": "location", "riskTier": "high"}},
+    {"data": {"id": "E10", "label": "Unknown Beneficiary", "entityType": "unknown", "riskTier": "high"}}
+  ],
+  "edges": [
+    {"data": {"id": "R1", "source": "E1", "target": "E2", "label": "owns", "strength": 0.9}},
+    {"data": {"id": "R2", "source": "E2", "target": "E8", "label": "contracts", "strength": 0.6}},
+    {"data": {"id": "R3", "source": "E4", "target": "E3", "label": "UBO (hidden)", "strength": 0.95}},
+    {"data": {"id": "R4", "source": "E3", "target": "E6", "label": "wires_to", "strength": 0.88}},
+    {"data": {"id": "R5", "source": "E1", "target": "E7", "label": "p2p_cluster", "strength": 0.4}},
+    {"data": {"id": "R6", "source": "E5", "target": "E2", "label": "funds", "strength": 0.7}},
+    {"data": {"id": "R7", "source": "E3", "target": "E9", "label": "registered_at", "strength": 0.75}},
+    {"data": {"id": "R8", "source": "E10", "target": "E6", "label": "beneficiary_of", "strength": 0.82}},
+    {"data": {"id": "R9", "source": "E4", "target": "E9", "label": "same_address_as", "strength": 0.72}},
+    {"data": {"id": "R10", "source": "E7", "target": "E6", "label": "settlement_path", "strength": 0.55}}
+  ]
+}

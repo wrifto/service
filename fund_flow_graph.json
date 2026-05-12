@@ -1,0 +1,25 @@
+{
+  "nodes": [
+    {"data": {"id": "n1", "label": "Primary Checking", "nodeType": "retail", "balanceHint": 12400}},
+    {"data": {"id": "n2", "label": "Payroll Clearing", "nodeType": "internal", "balanceHint": 210000}},
+    {"data": {"id": "n3", "label": "Business Ops", "nodeType": "business", "balanceHint": 89000}},
+    {"data": {"id": "n4", "label": "Treasury", "nodeType": "treasury", "balanceHint": 520000}},
+    {"data": {"id": "n5", "label": "Vendor AP", "nodeType": "internal", "balanceHint": 78000}},
+    {"data": {"id": "n6", "label": "Crypto Wallet 9F2A", "nodeType": "external_high_risk", "balanceHint": null}},
+    {"data": {"id": "n7", "label": "Offshore 44B", "nodeType": "external_high_risk", "balanceHint": null}},
+    {"data": {"id": "n8", "label": "Shell Entity Peel", "nodeType": "suspicious", "balanceHint": null}},
+    {"data": {"id": "n9", "label": "Marketplace / Merchants", "nodeType": "merchant", "balanceHint": null}}
+  ],
+  "edges": [
+    {"data": {"id": "e1", "source": "n2", "target": "n1", "weight": 42102.5, "label": "Payroll"}},
+    {"data": {"id": "e2", "source": "n1", "target": "n9", "weight": 18500.2, "label": "Card spend"}},
+    {"data": {"id": "e3", "source": "n4", "target": "n3", "weight": 135000, "label": "Capital sweep"}},
+    {"data": {"id": "e4", "source": "n3", "target": "n5", "weight": 67890, "label": "AP funding"}},
+    {"data": {"id": "e5", "source": "n1", "target": "n6", "weight": 9799, "label": "Wire (flagged)", "risk": "high"}},
+    {"data": {"id": "e6", "source": "n4", "target": "n7", "weight": 75000, "label": "Wire (flagged)", "risk": "high"}},
+    {"data": {"id": "e7", "source": "n1", "target": "n8", "weight": 3000, "label": "ACH (flagged)", "risk": "high"}},
+    {"data": {"id": "e8", "source": "n8", "target": "n7", "weight": 12000, "label": "Layering", "risk": "high"}},
+    {"data": {"id": "e9", "source": "n5", "target": "n3", "weight": 4500, "label": "Reimbursements"}},
+    {"data": {"id": "e10", "source": "n3", "target": "n1", "weight": 8500, "label": "Owner flows"}}
+  ]
+}
